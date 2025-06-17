@@ -6,3 +6,12 @@ async function bootstrap() {
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
+
+/**
+ * CMD
+ *
+ * nest g resource <RESOURCE_NAME> --no-spec
+ * nest g module <MODULE_NAME>
+ * nest g controller <CONTROLLER_NAME> --no-spec
+ * nest g service <SERVICE_NAME> --no-spec
+ */
