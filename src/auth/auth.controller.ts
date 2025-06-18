@@ -15,7 +15,7 @@ export class AuthController {
 
   @Post('signin')
   signin(@Body() dto: AuthDto) {
-    return this.authService.signin();
+    return this.authService.signin(dto);
   }
 
   // it is not recommended to use request object of underlying library (ex: express)
