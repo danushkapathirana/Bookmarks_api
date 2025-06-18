@@ -37,6 +37,7 @@ bootstrap();
  * npm install @prisma/client
  * npm i --save class-validator class-transformer
  * npm i argon2
+ * npm i --save @nestjs/config
  *
  *
  * Custom scripts
