@@ -38,6 +38,9 @@ bootstrap();
  * npm i --save class-validator class-transformer
  * npm i argon2
  * npm i --save @nestjs/config
+ * npm install --save @nestjs/passport passport
+ * npm install --save @nestjs/jwt passport-jwt
+ * npm install --save-dev @types/passport-jwt
  *
  *
  * Custom scripts
