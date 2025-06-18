@@ -37,4 +37,34 @@ bootstrap();
  * npm install @prisma/client
  * npm i --save class-validator class-transformer
  * npm i argon2
+ *
+ *
+ * Custom scripts
+ *
+ * "prisma:dev:deploy": "prisma migrate deploy"
+ * "db:dev:rm": "docker compose rm dev-db -s -f -v"
+ *
+ * -s -> stop the container before removing
+ * -f -> force without removal confirmation
+ * -v -> remove volume associated with container
+ *
+ * "db:dev:up": "docker compose up dev-db -d"
+ *
+ *
+ * Note
+ *
+ * "npx prisma migrate dev" vs "npx prisma migrate deploy"
+ *
+ * npx prisma migrate dev ->
+ * - creates a new migration file, if schema has changed
+ * - applies the migration to local development database
+ * - generates prisma client if needed
+ * - good for development environment
+ *
+ * npx prisma migrate deploy ->
+ * - looks for existing migration files in the prisma/migrations folder
+ * - applies all pending migrations to the target database
+ * - does not create a new migration file
+ * - does not automatically generate prisma client
+ * - good for production environment (or CI/CD pipeline)
  */
