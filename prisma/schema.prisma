@@ -14,13 +14,16 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  email     String   @unique
+  id        Int        @id @default(autoincrement())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  email     String     @unique
   hash      String
   firstName String?
   lastName  String?
+  Bookmarks Bookmark[]
+
+  @@map("users")
 }
 
 model Bookmark {
@@ -30,4 +33,12 @@ model Bookmark {
   title       String
   description String?
   link        String
+
+  // relationship between user and bookmark (1 to M)
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  // map with the table in the database with a different name
+  // required only if modal name is different than database table name
+  @@map("bookmarks")
 }
