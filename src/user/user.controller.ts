@@ -1,15 +1,18 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
+import { User } from '@prisma/client';
 
 import { JwtGuard } from 'src/auth/guard';
+import { GetUser } from 'src/auth/decorator';
 
 @Controller('user')
 export class UserController {
   @UseGuards(JwtGuard)
   @Get('me')
-  getUser(@Req() request: Request) {
-    return request.user;
+  // use same decorator to retrieve either full user object or specified field from it
+  getUser(@GetUser() user: User, @GetUser('email') email: string) {
+    return user;
   }
 }
 
