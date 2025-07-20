@@ -36,7 +36,8 @@ model Bookmark {
 
   // relationship between user and bookmark (1 to M)
   userId Int
-  user   User @relation(fields: [userId], references: [id])
+  // onDelete: Cascade -> if a parent record is deleted, all related child records will automatically be deleted
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // map with the table in the database with a different name
   // required only if modal name is different than database table name
